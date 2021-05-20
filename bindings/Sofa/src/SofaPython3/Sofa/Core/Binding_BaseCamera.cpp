@@ -144,3 +144,11 @@ void moduleAddBaseCamera(py::module &m)
 }
 
 } /// namespace sofapython3
+
+
+// The class instanciation of the following binding is explicit here
+// to force its linkage into external projects/plugins (see PR #130)
+template class pybind11::class_<
+	sofa::component::visualmodel::BaseCamera,
+	sofa::core::objectmodel::BaseObject,
+	sofapython3::py_shared_ptr<sofa::component::visualmodel::BaseCamera>>;
