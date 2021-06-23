@@ -141,6 +141,17 @@ void moduleAddBaseCamera(py::module &m)
          self->setCameraType(0);
     });
 
+    c.def("worldToScreenPoint", [](BaseCamera *self, py::list pos) {
+         sofa::defaulttype::Vec3 vec1;
+         vec1 = sofa::defaulttype::Vec3(py::cast<double>(pos[0]), py::cast<double>(pos[1]), py::cast<double>(pos[2]));
+         return(self->worldToScreenPoint(vec1));
+    });
+
+    c.def("screenToWorldPoint", [](BaseCamera *self, py::list pos) {
+         sofa::defaulttype::Vec3 vec1;
+         vec1 = sofa::defaulttype::Vec3(py::cast<double>(pos[0]), py::cast<double>(pos[1]), py::cast<double>(pos[2]));
+         return(self->screenToWorldPoint(vec1));
+    });
 }
 
 } /// namespace sofapython3
